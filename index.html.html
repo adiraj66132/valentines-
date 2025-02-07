@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            overflow: hidden;
+        }
+        h1 {
+            color: white;
+            font-size: 4rem;
+            margin-top: 20vh;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            color: white;
+            font-size: 2rem;
+            margin: 20px;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: floatUp 4s linear infinite;
+        }
+        .heart:before, .heart:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+        .heart:after {
+            left: 10px;
+            top: 0;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(-45deg); opacity: 0; }
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background-color: white;
+            color: #ff4081;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Dancing Script', cursive;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        .music-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Valentine's Day, My Love! ❤️</h1>
+    <p>You make my world brighter and my heart happier. I love you! 💖</p>
+    <button onclick="playMusic()">Play Our Song 🎶</button>
+    <div class="music-container" id="musicContainer"></div>
+    <script>
+        function playMusic() {
+            const songUrl = "https://open.spotify.com/embed/track/3dYD57lRAUcMHufyqn9GcI"; // Replace with a valid Spotify/YouTube Music song URL
+            const container = document.getElementById("musicContainer");
+            container.innerHTML = ""; // Clear previous iframes
+            const iframe = document.createElement("iframe");
+            iframe.setAttribute("src", songUrl);
+            iframe.setAttribute("width", "300");
+            iframe.setAttribute("height", "80");
+            iframe.setAttribute("frameborder", "0");
+            iframe.setAttribute("allowtransparency", "true");
+            iframe.setAttribute("allow", "encrypted-media");
+            container.appendChild(iframe);
+        }
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.body.appendChild(heart);
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            setTimeout(() => { heart.remove(); }, 4000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
